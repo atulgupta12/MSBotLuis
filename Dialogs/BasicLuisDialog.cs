@@ -44,6 +44,12 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
             await this.ShowLuisResult(context, result);
         }
+		
+		[LuisIntent("FindDocumentation")]
+        public async Task FindIntent(IDialogContext context, LuisResult result)
+        {
+            await this.ShowLuisResult(context, result);
+        }
 
         private async Task ShowLuisResult(IDialogContext context, LuisResult result) 
         {
