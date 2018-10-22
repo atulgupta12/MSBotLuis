@@ -98,6 +98,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 //should replace all special chars
                 sbQuery.Append(this.message.Text.Replace("?", ""));
             }
+            await context.PostAsync($"Kindly wait while I look keyword '{searchKeyword}' for you on the Product Catalogue Library");
 
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
@@ -118,7 +119,8 @@ namespace Microsoft.Bot.Sample.LuisBot
                 query.QueryText = string.Concat(sbQuery.ToString(), " IsDocument:1");
                 //query.QueryText = "test";
                 query.RowLimit = 5;
-
+                
+                //reply.Text += $"Kindly wait while I look keyword '{searchKeyword}' for you on the Product Catalogue Library";
                 SearchExecutor searchExecutor = new SearchExecutor(clientContext);
                 ClientResult<ResultTableCollection> resultShare = searchExecutor.ExecuteQuery(query);
                 clientContext.ExecuteQuery();
